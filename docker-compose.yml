@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  jupyterlab:
+    image: jupyter/scipy-notebook:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/jovyan/work
+      - ./dev/jupyterlab_settings:/home/jovyan/.jupyter/lab/user-settings
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.notebook_dir=/home/jovyan/work
